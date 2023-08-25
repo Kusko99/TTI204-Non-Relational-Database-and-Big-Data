@@ -40,4 +40,4 @@ db.empresa.insertMany([{
     razao_social: 'ABCD equipamentos eletrônicos SA', 
     cnpj : 12300999,
     inscrição_social: 'ISENTO'
-}])
+}]) 
