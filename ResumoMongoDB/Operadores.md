@@ -10,6 +10,11 @@
 * $and: compara duas condições com o operador and
 * $in: verifica se um atributo contém um dos valores de um array
 * $all: verifica se um atributo contém todos os valores de um array
+* $nin: seleciona documentos em que o valor do campo especificado não está no array ou documentos que não possuam o campo
+* $eq: seleciona documentos em que o valor é igual ao especificado
+* $ne: seleciona documentos em que o valor é diferente (not equal) ao especificado
+* $not: operador NOT, seleciona documentos que não satisfazem a expressão
+* $nor: seleciona os documentos que não satisfazem a lista de condições
 
 ### Exemplos
 
@@ -33,12 +38,24 @@ db.estoque.find({$or: [{qtde: {$lt: 20}},
 //$and
 //explicitamente (reparem no [])
 db.pessoas.find( { $and: [ { nome: { $gt: "C"} },
-{ nome: { $regex: "a"} } ] } );
+{ nome: { $regex: "a"} } ] } )
 //implicitamente
-db.pessoas.find( { nome: { $gt: "C", $regex: "a"}});
+db.pessoas.find( { nome: { $gt: "C", $regex: "a"}})
 //explicitamente (reparem no [])
 db.notas.find( { $and: [ { nota: { $gt: 50} },
-{ tipo: "prova"} ] } );
+{ tipo: "prova"} ] } )
 //implicitamente
-db.notas.find( { nota: { $gt: 50}, tipo:"prova"});
+db.notas.find( { nota: { $gt: 50}, tipo:"prova"})
+
+//$in
+db.pessoas.find({favoritos:
+{$in:["pizza","refrigerante"]}})
+
+//$all
+db.pessoas.find({favoritos:
+{$all:["pizza","refrigerante"]}})
+
+//$nor
+db.estoque.find({ $nor: [ { preço: 1.99 }, {
+a_venda: true } ]})
 ```
