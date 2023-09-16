@@ -12,4 +12,4 @@ db.posts.deleteOne({ title: "Post Title 5" })
 
 ```
 db.posts.deleteMany({ category: "Technology" })
-```
+``` 
