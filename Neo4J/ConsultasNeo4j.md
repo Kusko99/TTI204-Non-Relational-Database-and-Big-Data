@@ -26,6 +26,13 @@ MATCH (n:LABEL)
 RETURN n.propriedade
 ```
 
+* Consultar os nós usando o ID
+```
+MATCH(n:PLAYER)
+WHERE ID(n) = 0
+RETURN n
+```
+
 * Consultar mais de uma propriedade especifica usando label
 ```
 MATCH (n:LABEL)
