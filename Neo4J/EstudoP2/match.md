@@ -143,6 +143,13 @@ match(n{name:"Charlize Thereon"})-[r:ACTED_IN|DIRECTED|PRODUCED] -> (k)
 return k
 ```
 
+* Retornando o tipo da relação
+```
+MATCH (a)-[r]->(b)
+WHERE a.name = "Laurence Fishburne"
+RETURN a.name, type(r), b.title
+```
+
 ### Multiplas Relações
 
 * Match diretores dos filmes que o Tom Hanks atuou
